@@ -3,6 +3,7 @@ package by.dzikovskiy.userservice.entity;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 public class BasicUser {
     private String name;
@@ -60,7 +61,7 @@ public class BasicUser {
         return phoneNumbers;
     }
 
-    public EnumSet<UserEnum> getRoles() {
+    public Set<UserEnum> getRoles() {
         return roles;
     }
 }

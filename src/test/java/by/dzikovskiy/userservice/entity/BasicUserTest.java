@@ -3,6 +3,7 @@ package by.dzikovskiy.userservice.entity;
 import org.testng.annotations.Test;
 
 import java.util.EnumSet;
+import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -15,7 +16,7 @@ public class BasicUserTest {
 
         user.addRole(UserEnum.USER);
         user.addRole(UserEnum.SUPER_ADMIN);
-        EnumSet<UserEnum> roles = user.getRoles();
+        Set<UserEnum> roles = user.getRoles();
 
         assertEquals(roles.size(), 2);
         assertTrue(roles.contains(UserEnum.USER));
@@ -32,7 +33,7 @@ public class BasicUserTest {
         user.deleteRole(UserEnum.USER);
         user.deleteRole(UserEnum.SUPER_ADMIN);
 
-        EnumSet<UserEnum> roles = user.getRoles();
+        Set<UserEnum> roles = user.getRoles();
 
         assertEquals(roles.size(), 0);
 
