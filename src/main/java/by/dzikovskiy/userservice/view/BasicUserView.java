@@ -31,7 +31,7 @@ public class BasicUserView {
         }
     }
 
-    public BasicUser addUser() {
+    public void addUser() {
         BasicUser basicUser = new BasicUser();
 
         System.out.println("\nEnter user name:");
@@ -91,8 +91,9 @@ public class BasicUserView {
             basicUser.addRole(role);
         }
 
+
+        basicUserRepository.save(basicUser);
         System.out.println("User added successfully");
-        return basicUser;
     }
 
     public void deleteUser() {
@@ -106,10 +107,30 @@ public class BasicUserView {
                 index = scanner.nextInt();
             }
             basicUserRepository.delete(users.get(index));
+            scanner.nextLine();
             System.out.println("User deleted");
         } else {
             System.out.println("Nothing to delete");
         }
 
+    }
+
+    public void editUser() {
+        users = basicUserRepository.getAll();
+        if (users.size() > 0) {
+            printUsers(users);
+            System.out.println("\nEnter number of user to edit");
+            int index = scanner.nextInt();
+            while (index > users.size() - 1) {
+                System.out.println("\nEnter correct index: ");
+                index = scanner.nextInt();
+            }
+            basicUserRepository.delete(users.get(index));
+            scanner.nextLine();
+            addUser();
+            System.out.println("User edited");
+        } else {
+            System.out.println("Nothing to edit");
+        }
     }
 }

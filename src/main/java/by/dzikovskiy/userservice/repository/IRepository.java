@@ -4,7 +4,9 @@ import java.util.List;
 
 public interface IRepository<T> {
 
-    public void save(T t);
-    public void delete(T t);
-    public List<T> getAll();
+    void save(T t);
+
+    void delete(T t);
+
+    List<T> getAll();
 }

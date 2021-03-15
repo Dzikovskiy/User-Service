@@ -27,15 +27,13 @@ public class BasicUserFileHelper {
         List<BasicUser> users = new ArrayList<>();
         File f = new File(fileName);
 
-        if(f.exists()){
+        if (f.exists()) {
             try (FileInputStream fileIn = new FileInputStream(fileName); ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
                 users = (List<BasicUser>) objectIn.readObject();
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
-        }else{
-            System.out.println("File is not exists");
         }
 
         return users;

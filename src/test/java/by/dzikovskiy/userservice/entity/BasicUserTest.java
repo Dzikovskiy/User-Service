@@ -2,7 +2,6 @@ package by.dzikovskiy.userservice.entity;
 
 import org.testng.annotations.Test;
 
-import java.util.EnumSet;
 import java.util.Set;
 
 import static org.testng.Assert.assertEquals;

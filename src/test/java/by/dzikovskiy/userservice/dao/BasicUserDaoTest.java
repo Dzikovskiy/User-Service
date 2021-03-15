@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class BasicUserDaoTest {
 
@@ -40,13 +40,13 @@ public class BasicUserDaoTest {
     @Test
     public void testGetAllAfterAddUsers() {
         List<BasicUser> basicUsers = new ArrayList<>();
-        BasicUser user1= new BasicUser();
+        BasicUser user1 = new BasicUser();
         user1.setName("name1");
         user1.setSurname("surname1");
         user1.setEmail("user1@mail.com");
         user1.addPhoneNumber("375 292456707");
         user1.addRole(UserEnum.USER);
-        BasicUser user2= new BasicUser();
+        BasicUser user2 = new BasicUser();
         user2.setName("name2");
         user2.setSurname("surname2");
         user2.setEmail("user2@mail.com");
@@ -56,25 +56,24 @@ public class BasicUserDaoTest {
         basicUsers.add(user1);
         basicUsers.add(user2);
 
-        BasicUserDao basicUserDao =new BasicUserDao();
+        BasicUserDao basicUserDao = new BasicUserDao();
         basicUserDao.addBasicUser(user1);
         basicUserDao.addBasicUser(user2);
 
-        assertEquals(basicUsers,basicUserDao.getAll());
+        assertEquals(basicUsers, basicUserDao.getAll());
     }
-
 
 
     @Test
     public void testRemoveBasicUser() {
         List<BasicUser> basicUsers = new ArrayList<>();
-        BasicUser user1= new BasicUser();
+        BasicUser user1 = new BasicUser();
         user1.setName("name1");
         user1.setSurname("surname1");
         user1.setEmail("user1@mail.com");
         user1.addPhoneNumber("375 292456707");
         user1.addRole(UserEnum.USER);
-        BasicUser user2= new BasicUser();
+        BasicUser user2 = new BasicUser();
         user2.setName("name2");
         user2.setSurname("surname2");
         user2.setEmail("user2@mail.com");
@@ -83,12 +82,12 @@ public class BasicUserDaoTest {
         user2.addRole(UserEnum.SUPER_ADMIN);
         basicUsers.add(user1);
 
-        BasicUserDao basicUserDao =new BasicUserDao();
+        BasicUserDao basicUserDao = new BasicUserDao();
         basicUserDao.addBasicUser(user1);
         basicUserDao.addBasicUser(user2);
         basicUserDao.removeBasicUser(user2);
 
-        assertEquals(basicUsers,basicUserDao.getAll());
-        assertEquals(basicUsers.size(),basicUserDao.getAll().size());
+        assertEquals(basicUsers, basicUserDao.getAll());
+        assertEquals(basicUsers.size(), basicUserDao.getAll().size());
     }
 }

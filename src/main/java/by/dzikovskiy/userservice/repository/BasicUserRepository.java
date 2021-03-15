@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BasicUserRepository implements IRepository<BasicUser> {
 
-    private BasicUserDao userDao;
+    private final BasicUserDao userDao;
 
     public BasicUserRepository() {
         this.userDao = new BasicUserDao();

@@ -33,14 +33,14 @@ public class MenuView {
                     userView.printUsers(users);
                     break;
                 case 2:
-                    basicUserRepository.save(userView.addUser());
+                    userView.addUser();
                     break;
                 case 3:
                     userView.deleteUser();
                     break;
-//                case 4:
-//                    book = booksView.addBook();
-//                    repository.delete(book);
+                case 4:
+                    userView.editUser();
+                    break;
                 case 5:
                     return;
                 default:

@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 public class BasicUser implements Serializable {
+    private final List<String> phoneNumbers;
+    private final EnumSet<UserEnum> roles;
     private String name;
     private String surname;
     private String email;
-    private final List<String> phoneNumbers;
-    private final EnumSet<UserEnum> roles;
 
     public BasicUser() {
         this.phoneNumbers = new ArrayList<>(3);
