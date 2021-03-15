@@ -1,11 +1,12 @@
 package by.dzikovskiy.userservice.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 
-public class BasicUser {
+public class BasicUser implements Serializable {
     private String name;
     private String surname;
     private String email;
@@ -63,5 +64,40 @@ public class BasicUser {
 
     public Set<UserEnum> getRoles() {
         return roles;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BasicUser)) return false;
+
+        BasicUser basicUser = (BasicUser) o;
+
+        if (!name.equals(basicUser.name)) return false;
+        if (!surname.equals(basicUser.surname)) return false;
+        if (!email.equals(basicUser.email)) return false;
+        if (!phoneNumbers.equals(basicUser.phoneNumbers)) return false;
+        return roles.equals(basicUser.roles);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + surname.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + phoneNumbers.hashCode();
+        result = 31 * result + roles.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "BasicUser{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumbers=" + phoneNumbers +
+                ", roles=" + roles +
+                '}';
     }
 }

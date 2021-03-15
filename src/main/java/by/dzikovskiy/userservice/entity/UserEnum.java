@@ -12,4 +12,5 @@ public enum UserEnum {
     public int getLevel() {
         return this.level;
     }
+
 }
