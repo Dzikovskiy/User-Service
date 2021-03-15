@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class MenuView {
     private final BasicUserView userView;
     private final BasicUserRepository basicUserRepository;
-    Scanner scanner;
-    List<BasicUser> users;
+    private final Scanner scanner;
+    private List<BasicUser> users;
 
     public MenuView() {
         this.scanner = new Scanner(System.in);
@@ -35,10 +35,9 @@ public class MenuView {
                 case 2:
                     basicUserRepository.save(userView.addUser());
                     break;
-//                case 3:
-//                    book = booksView.addBook();
-//                    repository.save(book);
-//                    break;
+                case 3:
+                    userView.deleteUser();
+                    break;
 //                case 4:
 //                    book = booksView.addBook();
 //                    repository.delete(book);

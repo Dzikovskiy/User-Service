@@ -2,6 +2,7 @@ package by.dzikovskiy.userservice.view;
 
 import by.dzikovskiy.userservice.entity.BasicUser;
 import by.dzikovskiy.userservice.entity.UserEnum;
+import by.dzikovskiy.userservice.repository.BasicUserRepository;
 import by.dzikovskiy.userservice.service.UserEmailValidator;
 import by.dzikovskiy.userservice.service.UserPhoneNumberValidator;
 import by.dzikovskiy.userservice.service.UserRolesValidator;
@@ -12,14 +13,21 @@ import java.util.Scanner;
 
 public class BasicUserView {
     private final Scanner scanner;
+    private final BasicUserRepository basicUserRepository;
+    private List<BasicUser> users;
 
     public BasicUserView() {
         this.scanner = new Scanner(System.in);
+        this.basicUserRepository = new BasicUserRepository();
+        this.users = basicUserRepository.getAll();
     }
 
     public void printUsers(List<BasicUser> users) {
         if (users != null) {
-            users.forEach(System.out::println);
+            int index = 0;
+            for (BasicUser user : users) {
+                System.out.println(index + ". " + user);
+            }
         }
     }
 
@@ -85,5 +93,23 @@ public class BasicUserView {
 
         System.out.println("User added successfully");
         return basicUser;
+    }
+
+    public void deleteUser() {
+        users = basicUserRepository.getAll();
+        if (users.size() > 0) {
+            printUsers(users);
+            System.out.println("\nEnter number of user to delete");
+            int index = scanner.nextInt();
+            while (index > users.size() - 1) {
+                System.out.println("\nEnter correct index: ");
+                index = scanner.nextInt();
+            }
+            basicUserRepository.delete(users.get(index));
+            System.out.println("User deleted");
+        } else {
+            System.out.println("Nothing to delete");
+        }
+
     }
 }
